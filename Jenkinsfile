@@ -3,8 +3,8 @@ pipeline {
     stages {  
             stage ('Check-Git-Secrets') {  
                 steps{
-                    sh 'docker pull gesellix/trufflehog'
-                    sh 'docker run -t gesellix/trufflehog --json https://github.com/devopssecure/webapp.git > trufflehog';
+                    git url: 'https://github.com/jeroled/webapp.git'
+                    echo "Checkout successful";
                 } 
             }
             stage ('Compile') {  
