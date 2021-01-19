@@ -1,10 +1,10 @@
 pipeline {  
     agent any  
     stages {  
-            stage ('Git-Checkout') {  
+            stage ('Check-Git-Secrets') {  
                 steps{
-                    git url: 'https://github.com/jeroled/webapp.git'
-                    echo "Checkout successful";
+                    sh 'docker pull gesellix/trufflehog'
+                    sh 'docker run -t gesellix/trufflehog --json https://github.com/devopssecure/webapp.git > trufflehog';
                 } 
             }
             stage ('Compile') {  
