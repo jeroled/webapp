@@ -28,12 +28,7 @@ pipeline {
                     echo "test successful";
                 } 
             }
-            stage ('Deploy') {
-            steps{
-            	sshagent(['tomcat']) {
-		sh 'scp -o StrictHostKeyChecking=target/*.war ubuntu@54.153.120.129:/home/ubuntu/prod/apache-tomcat-8.5.61/webapps/webapp.war'
-            }
-        }
+
         stage ('Monitor') { 
            steps{ 
              echo "Now you can monitor!";
