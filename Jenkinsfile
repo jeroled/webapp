@@ -31,8 +31,8 @@ pipeline {
             
         stage ('Deploy') {
             steps{
-            deploy adapters: [tomcat9(path: '', url: 'http://54.153.120.129:8080/')], contextPath: 'jenkins_calci', onFailure: false, war: '**/*.war'
-             echo "Deploy successful";
+            sshagent(['tomcat']) {
+			sh 'scp -o StrictHostKeyChecking=target/*.war ubuntu@54.153.120.129:/home/ubuntu/prod/apache-tomcat-8.5.61/webapps/webapp.war'
             }
         }
         stage ('Monitor') { 
