@@ -17,11 +17,12 @@ pipeline {
         
             stage ('OWASP Dependency Check'){
                 steps {
-                    sh 'rm owasp* || true'
-                    sh 'wget "https://raw.githubusercontent.com/jeroled/webapp/master/owasp-dependency-check.sh"'
-                    sh 'chmod +x owasp-dependency-check.sh'
-                    sh 'bash owasp-dependency-check.sh'
-                    sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/odc-report/dependency-check-report.xml'
+                    sh 'mvn org.owasp:dependency-check-maven:check'
+                    //sh 'rm owasp* || true'
+                    //sh 'wget "https://raw.githubusercontent.com/jeroled/webapp/master/owasp-dependency-check.sh"'
+                    //sh 'chmod +x owasp-dependency-check.sh'
+                    //sh 'bash owasp-dependency-check.sh'
+                    //sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/odc-report/dependency-check-report.xml'
                     echo "Check complete";
                 }
             }
