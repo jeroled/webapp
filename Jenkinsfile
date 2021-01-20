@@ -20,7 +20,7 @@ pipeline {
                     sh 'wget "https://raw.githubusercontent.com/jeroled/webapp/master/owasp-dependency-check.sh"'
                     sh 'chmod +x owasp-dependency-check.sh'
                     sh 'bash owasp-dependency-check.sh'
-                    sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/report/dependency-check-report.xml'
+                    sh 'cat /var/lib/jenkins/OWASP-Dependency-Check/odc-report/dependency-check-report.xml'
                     echo "Check complete";
                 }
             }
