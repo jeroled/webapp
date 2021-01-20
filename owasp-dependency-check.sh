@@ -28,6 +28,6 @@ docker run --rm \
     --scan /src \
     --format "ALL" \
     --project "$DC_PROJECT" \
-    --out /odc-reports
+    --out /reports
     # Use suppression like this: (where /src == $pwd)
-    # --suppression "/src/security/dependency-check-suppression.xml"
+    --suppression "/src/security/dependency-check-suppression.xml"
