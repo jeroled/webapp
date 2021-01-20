@@ -30,4 +30,4 @@ docker run --rm \
     --project "$DC_PROJECT" \
     --out /reports
     # Use suppression like this: (where /src == $pwd)
-    --suppression "/src/security/dependency-check-suppression.xml"
+    #--suppression "/src/security/dependency-check-suppression.xml"
