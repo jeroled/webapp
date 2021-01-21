@@ -29,7 +29,7 @@ pipeline {
         
             stage ('SonarQube Check'){
                 steps {
-                    withSoanrQubeEnv('jenkins'){
+                    withSonarQubeEnv('jenkins'){
                         sh 'mvn sonar:sonar'
                         sh 'cat target/sonar/report-task.txt'
                     }
