@@ -36,14 +36,13 @@ pipeline {
                 }
             }
         
-            stage('Build docker image') {
-            //Build the docker image with a tag (qualys:sample in this case)
+            stage('Get Image Vulns - Qualys Plugin') {
+            //Use the same environment variable(env.IMAGE_ID) as an input to Qualys Plugin's step
                 steps {
-                    dir("dockerbuild") {
-                    sh "docker build -t qualys:sample . > docker_output"
+                    getImageVulnsFromQualys useGlobalConfig:true,
+                    imageIds: env.IMAGE_ID
                     }
                 }
-            }
         
             stage ('Build') {  
                   steps{
