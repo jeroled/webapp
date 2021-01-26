@@ -36,13 +36,12 @@ pipeline {
                 }
             }
         
-            stage('Get Image Vulns - Qualys Plugin') {
-            //Use the same environment variable(env.IMAGE_ID) as an input to Qualys Plugin's step
-                steps {
-                    getImageVulnsFromQualys useGlobalConfig:true,
-                    imageIds: env.IMAGE_ID
-                    }
-                }
+            stage ("Dynamic Analysis - DAST with OWASP ZAP") {
+			steps {
+				sh "docker run -t owasp/zap2docker-stable zap-baseline.py -t http://52.53.242.200:5000/ || true"
+			}
+		
+		}
         
             stage ('Build') {  
                   steps{
