@@ -65,8 +65,7 @@ pipeline {
  	//Use the same repo:tag (qualys:sample in this case) combination with the grep command to get the same image id and save the image id in an environment variable
 		    steps {
 			    script {
-				    def IMAGE_ID = sh(script: "docker images | grep -E '^qualys.*sample' | head -1 | awk '{print \$3}'", 
-						      returnStdout: true).trim() env.IMAGE_ID = IMAGE_ID
+				    def IMAGE_ID = sh(script: "docker images | grep -E '^qualys.*sample' | head -1 | awk '{print \$3}'", returnStdout: true).trim() env.IMAGE_ID = IMAGE_ID
 			    }
 		    }
 	    }
