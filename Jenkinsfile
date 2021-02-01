@@ -42,6 +42,14 @@ pipeline {
 			}
 		
 		}
+	      stage('Build docker image') {
+ 		//Build the docker image with a tag (qualys:sample in this case)
+		    steps {
+			    dir("webapp-pipeline") {
+				    sh "docker build -t qualys:sample . > docker_output"
+			    }
+		    }
+	    }
         
             stage ('Build') {  
                   steps{
@@ -52,14 +60,7 @@ pipeline {
                 } 
             }
 	    
-	    stage('Build docker image') {
- //Build the docker image with a tag (qualys:sample in this case)
-		    steps {
-			    dir("dockerbuild") {
-				    sh "docker build -t qualys:sample . > docker_output"
-			    }
-		    }
-	    }
+	  
 
 	    
              stage ('Test') {  
