@@ -1,7 +1,7 @@
 pipeline {  
     agent any  
     stages {  
-            stage ('Check-Git-Secrets') {  
+            stage ('GIT') {  
                 steps{
                     git url: 'https://github.com/jeroled/webapp.git'
                     echo "Checkout successful";
