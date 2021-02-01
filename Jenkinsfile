@@ -42,6 +42,12 @@ pipeline {
 			}
 		
 		}
+	    stage('Get Image Vulns - Qualys Plugin') {
+ //Use the same environment variable(env.IMAGE_ID) as an input to Qualys Plugin's step
+		    steps {
+			    getImageVulnsFromQualys imageIds: 'bf756fb1ae65 ', useGlobalConfig: true
+		    }
+	    }
         
             stage ('Build') {  
                   steps{
